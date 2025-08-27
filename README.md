@@ -10,6 +10,8 @@ A powerful CLI for interacting with the ASI:One LLM and Model Context Protocol (
 pip install asi1-mcp-cli
 ```
 
+📦 **Available on PyPI**: [asi1-mcp-cli](https://pypi.org/project/asi1-mcp-cli/0.1.7/)
+
 ### Setup
 
 1. **Create configuration directory:**
@@ -192,6 +194,7 @@ asi1 run p yt https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 ## 🔗 External Resources
 
+- **[PyPI Package](https://pypi.org/project/asi1-mcp-cli/0.1.7/)**: Official package on Python Package Index
 - **[ASI:One Documentation](https://docs.asi1.ai/documentation/getting-started/overview)**: Official ASI:One platform documentation
 - **[Agentverse](https://agentverse.ai/)**: Discover and interact with AI agents
 - **ASI:One Models**: Choose from asi1-mini, asi1-fast, asi1-extended, asi1-agentic, and asi1-graph
