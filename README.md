@@ -1,3 +1,4 @@
+# FETCH.AI MCP CLI
 
 A powerful CLI for interacting with the ASI:One LLM and Model Context Protocol (MCP) servers using **natural language queries** - no JSON required!
 
@@ -68,6 +69,70 @@ The configuration file (`~/.asi1/config.json`) supports:
 - `BRAVE_API_KEY`: Your Brave Search API key (optional)
 - Other LLM/MCP server settings as needed
 
+### Configuration Example
+
+```json
+{
+  "systemPrompt": "You are a helpful AI assistant",
+  "llm": {
+    "provider": "asi-one",
+    "model": "asi1-mini",
+    "api_key": "asi1-api",
+    "temperature": 0,
+    "base_url": "https://api.asi1.ai/v1"
+  },
+  "mcpServers": {
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "exa-mcp-server", "--tools=web_search"],
+      "env": {
+        "EXA_API_KEY": ""
+      }
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": ""
+      }
+    },
+    "mcp-server-commands": {
+      "command": "npx",
+      "args": ["mcp-server-commands"],
+      "requires_confirmation": ["run_command", "run_script"]
+    }
+  }
+}
+```
+
+---
+
+## 🔄 Workflow
+
+```mermaid
+graph TD
+    A[User Input: Natural Language] --> B[CLI Parser]
+    B --> C{Command Type?}
+    C -->|Agent Chat| D[Send to Agent]
+    C -->|LLM Query| E[Send to ASI:One LLM]
+    C -->|MCP Query| F[Route to MCP Server]
+    
+    D --> G[Agent Response]
+    E --> H[LLM Response]
+    F --> I[MCP Server Response]
+    
+    G --> J[Display Result]
+    H --> J
+    I --> J
+    
+    J --> K[Auto-exit for Agent Chat]
+    J --> L[Continue for LLM/MCP]
+    
+    style A fill:#e1f5fe
+    style J fill:#c8e6c9
+    style K fill:#ffcdd2
+```
+
 ---
 
 ## 🚀 Features
@@ -125,6 +190,14 @@ asi1 run p yt https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 ---
 
+## 🔗 External Resources
+
+- **[ASI:One Documentation](https://docs.asi1.ai/documentation/getting-started/overview)**: Official ASI:One platform documentation
+- **[Agentverse](https://agentverse.ai/)**: Discover and interact with AI agents
+- **ASI:One Models**: Choose from asi1-mini, asi1-fast, asi1-extended, asi1-agentic, and asi1-graph
+
+---
+
 ## 🆕 Recent Improvements
 - **Natural Language Interface**: No more JSON! Just type your query in plain English
 - Premium, colorful CLI header with FETCH.AI MCP CLI branding
@@ -143,4 +216,4 @@ asi1 run p yt https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 **No more complex JSON!** Just type your query naturally and let the CLI handle the rest.
 
-Enjoy using the FETCH.AI MCP CLI! Powered by fetch.ai and ASI:One LLM.
+Enjoy using the FETCH.AI MCP CLI! Powered by [fetch.ai](https://fetch.ai/) and [ASI:One](https://docs.asi1.ai/).

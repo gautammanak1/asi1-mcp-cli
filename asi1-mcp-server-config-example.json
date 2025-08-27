@@ -1,10 +1,31 @@
 {
-  "systemPrompt": "You are a helpful AI assistant.",
+  "systemPrompt": "You are a helpful AI assistant",
   "llm": {
     "provider": "asi-one",
     "model": "asi1-mini",
-    "api_key": "sk_5822be6c948d4a25830382b308f6f51ee13629ffe6fc4dc7a064cc26e486df84",
+    "api_key": "asi1-api",
     "temperature": 0,
     "base_url": "https://api.asi1.ai/v1"
+  },
+  "mcpServers": {
+    "exa": {
+      "command": "npx",
+      "args": ["-y", "exa-mcp-server", "--tools=web_search"],
+      "env": {
+        "EXA_API_KEY": ""
+      }
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": ""
+      }
+    },
+    "mcp-server-commands": {
+      "command": "npx",
+      "args": ["mcp-server-commands"],
+      "requires_confirmation": ["run_command", "run_script"]
+    }
   }
 }
